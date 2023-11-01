@@ -1,0 +1,13 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Wed Nov 01 15:08:59 NZDT 2023
+@default-github-raw.githubusercontent.com/zjack8/kabeja-maven-dependency/main/org/kabeja/kabeja/0.4/kabeja-0.4.jar/.lastUpdated=1698804244320
+http\://logicaldoc.sourceforge.net/maven/.lastUpdated=1698804539622
+http\://repository.aspose.com/repo/.error=
+http\://repository.aspose.com/repo/.lastUpdated=1698803697702
+https\://github.com/zjack8/kabeja-maven-dependency/.error=
+https\://github.com/zjack8/kabeja-maven-dependency/.lastUpdated=1698803697251
+https\://github.com/zjack8/kabeja-maven-dependency/tree/main/org/kabeja/kabeja/0.4/.error=
+https\://github.com/zjack8/kabeja-maven-dependency/tree/main/org/kabeja/kabeja/0.4/.lastUpdated=1698803977915
+https\://repo.maven.apache.org/maven2/.error=
+https\://repo.maven.apache.org/maven2/.lastUpdated=1698803697928
+raw.githubusercontent.com/zjack8/kabeja-maven-dependency/main/org/kabeja/kabeja/0.4/kabeja-0.4.jar/.error=Could not transfer artifact org.kabeja\:kabeja\:pom\:0.4 from/to github (raw.githubusercontent.com/zjack8/kabeja-maven-dependency/main/org/kabeja/kabeja/0.4/kabeja-0.4.jar)\: Cannot access raw.githubusercontent.com/zjack8/kabeja-maven-dependency/main/org/kabeja/kabeja/0.4/kabeja-0.4.jar with type default using the available connector factories\: BasicRepositoryConnectorFactory

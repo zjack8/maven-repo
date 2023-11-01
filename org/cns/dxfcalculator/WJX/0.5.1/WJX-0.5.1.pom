@@ -1,0 +1,258 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>org.cns.dxfcalculator</groupId>
+	<artifactId>WJX</artifactId>
+	<version>0.5.1</version>
+	<packaging>jar</packaging>
+
+	<name>name</name>
+	<url>http://maven.apache.org</url>
+
+	<developers>
+		<developer>
+			<id>zjack8</id>
+			<name>Mathew Veale</name>
+			<organization>CNS Stainless Surfaces Limited</organization>
+			<organizationUrl>https://www.stainlessbenchtops.co.nz/</organizationUrl>
+			<roles>
+				<role>developer</role>
+			</roles>
+		</developer>
+	</developers>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<java.version>18</java.version>
+		<main.class>org.cns.wjx.application.AppLauncher</main.class>
+		<javafx.version>21-ea+24</javafx.version>
+		<version.maven.compiler>2.3.2</version.maven.compiler>
+		<version.maven.site>3.3</version.maven.site>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.openjfx</groupId>
+			<artifactId>javafx-controls</artifactId>
+			<version>${javafx.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.openjfx</groupId>
+			<artifactId>javafx-fxml</artifactId>
+			<version>${javafx.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.openjfx</groupId>
+			<artifactId>javafx-web</artifactId>
+			<version>${javafx.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.openjfx</groupId>
+			<artifactId>javafx-swing</artifactId>
+			<version>${javafx.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.kabeja</groupId>
+			<artifactId>kabeja</artifactId>
+			<version>0.4</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.aspose</groupId>
+			<artifactId>aspose-cad</artifactId>
+			<version>22.3</version>
+		</dependency>
+		<dependency>
+			<groupId>com.aspose</groupId>
+			<artifactId>aspose-words</artifactId>
+			<version>21.11</version>
+			<type>pom</type>
+		</dependency>
+		<dependency>
+			<groupId>com.aspose</groupId>
+			<artifactId>aspose-cells</artifactId>
+			<version>23.9</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.jasypt</groupId>
+			<artifactId>jasypt</artifactId>
+			<version>1.9.3</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>2.0.9</version>
+		</dependency>
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+			<version>1.4.11</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter</artifactId>
+			<version>5.10.0</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-junit-jupiter</artifactId>
+			<version>5.6.0</version>
+			<scope>test</scope>
+		</dependency>
+
+
+	</dependencies>
+
+	<repositories>
+		<repository>
+			<id>LogicalDoc</id>
+			<name>Logical Doc API</name>
+			<url>http://logicaldoc.sourceforge.net/maven/</url>
+		</repository>
+
+		<repository>
+			<id>Aspose</id>
+			<name>Aspose Java API</name>
+			<url>http://repository.aspose.com/repo/</url>
+		</repository>
+	</repositories>
+
+	<build>
+		<pluginManagement>
+			<plugins>
+				<!-- Compile -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>${version.maven.compiler}</version>
+					<configuration>
+						<encoding>UTF-8</encoding>
+						<source>${java.version}</source>
+						<target>${java.version}</target>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-site-plugin</artifactId>
+					<version>${version.maven.site}</version>
+				</plugin>
+
+				<!-- Test -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-surefire-plugin</artifactId>
+					<version>3.0.0</version> <!-- Use the appropriate version -->
+					<configuration>
+						<includes>
+							<include>**/*Test.java</include> <!-- Include test classes matching this pattern -->
+						</includes>
+					</configuration>
+				</plugin>
+
+				<!-- Build JAR -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-jar-plugin</artifactId>
+					<version>3.1.0</version>
+					<configuration>
+						<outputDirectory>ci</outputDirectory>
+						<archive>
+							<manifest>
+								<addClasspath>true</addClasspath>
+								<mainClass>${main.class}</mainClass>
+							</manifest>
+						</archive>
+					</configuration>
+				</plugin>
+
+				<!-- ProGuard -->
+				<plugin>
+					<groupId>com.github.wvengen</groupId>
+					<artifactId>proguard-maven-plugin</artifactId>
+					<executions>
+						<execution>
+							<phase>package</phase>
+							<goals>
+								<goal>proguard</goal>
+							</goals>
+						</execution>
+					</executions>
+					<configuration>
+						<obfuscate>true</obfuscate>
+						<injar>../ci/WJX-${project.version}.jar</injar>
+						<outjar>../ci/WJX-${project.version}-small.jar</outjar>
+						<outputDirectory>ci</outputDirectory>
+						<proguardInclude>ci/proguard.conf</proguardInclude>
+					</configuration>
+				</plugin>
+
+				<!-- Launch4J -->
+				<plugin>
+					<groupId>com.akathist.maven.plugins.launch4j</groupId>
+					<artifactId>launch4j-maven-plugin</artifactId>
+					<version>2.4.1</version>
+					<executions>
+						<execution>
+							<id>l4j-clui</id>
+							<phase>package</phase>
+							<goals>
+								<goal>launch4j</goal>
+							</goals>
+							<configuration>
+								<headerType>gui</headerType>
+								<dontWrapJar>false</dontWrapJar>
+								<jar>ci/WJX-${project.version}.jar</jar>
+								<outfile>ci/WJX-${project.version}.exe</outfile>
+								<chdir>.</chdir>
+								<priority>normal</priority>
+								<downloadUrl>http://java.com/download</downloadUrl>
+								<stayAlive>false</stayAlive>
+								<restartOnCrash>false</restartOnCrash>
+								<icon>C:\Users\Mathew\Documents\WJX v0.5\logo.ico</icon>
+								<jre>
+									<path>%EXEDIR%\jdk-18.0.1.1</path>
+									<bundledJre64Bit>false</bundledJre64Bit>
+									<bundledJreAsFallback>false</bundledJreAsFallback>
+									<jdkPreference>preferJre</jdkPreference>
+									<runtimeBits>64/32</runtimeBits>
+								</jre>
+							</configuration>
+						</execution>
+					</executions>
+				</plugin>
+
+				<!-- Inno Setup -->
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>exec-maven-plugin</artifactId>
+					<version>3.0.0</version>
+					<executions>
+						<execution>
+							<id>compile-inno-setup-script</id>
+							<phase>package</phase>
+							<goals>
+								<goal>exec</goal>
+							</goals>
+							<configuration>
+								<executable>ci/wjx-${project.version}.exe</executable>
+								<workingDirectory>${basedir}</workingDirectory>
+								<arguments>
+									<argument>wjx-wizard-script.iss</argument>
+								</arguments>
+							</configuration>
+						</execution>
+					</executions>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+</project>
