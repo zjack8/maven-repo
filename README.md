@@ -14,7 +14,7 @@ If anyone else wants to use it just add the relevant lines below to your pom.
 </repository>
 ```
 ### Dependencies
-Pick and choose which are relevant to your project
+Pick and choose which are relevant to your project. There are also more in this repo but these are specifically only on http.
 #### Kabeja
 ```
 <dependency>
