@@ -5,6 +5,9 @@ Now they are on a https site and can be used on machines that block non-secure s
 I may be adding to this in the future depending on my needs.
 
 If anyone else wants to use it just add the relevant lines below to your pom.
+
+I dunno if this is legal 🙂
+
 ### Repository
 ```
 <repository>
